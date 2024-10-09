@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script>
+    function checkOrientation() {
+      if (window.innerWidth < window.innerHeight) {
+        // 强制旋转为横屏
+        window.orientation = 90;
+        document.body.style.transform = 'rotate(90deg)';
+        document.body.style.transformOrigin = 'center center';
+        document.body.style.height = '100vw'; // 防止变形
+        document.body.style.width = '100vh'; // 防止变形
+        document.body.style.overflow = 'hidden'; // 防止滚动条
+      }
+    }
+
+    window.addEventListener('resize', checkOrientation);
+    window.addEventListener('orientationchange', checkOrientation);
+
+    // 初始加载时检测
+    checkOrientation();
+  </script>
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
